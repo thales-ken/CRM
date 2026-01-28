@@ -13,6 +13,7 @@ interface AddContactModalProps {
   };
   onChange: (contact: AddContactModalProps['contact']) => void;
   onPhotoUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  isEditing?: boolean;
 }
 
 const AddContactModal: React.FC<AddContactModalProps> = ({ 
@@ -21,7 +22,8 @@ const AddContactModal: React.FC<AddContactModalProps> = ({
   onSubmit, 
   contact, 
   onChange, 
-  onPhotoUpload 
+  onPhotoUpload,
+  isEditing = false,
 }) => {
   if (!isOpen) return null;
 
@@ -46,7 +48,9 @@ const AddContactModal: React.FC<AddContactModalProps> = ({
         width: '90%',
         boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
       }}>
-        <h2 style={{ margin: '0 0 1.5rem 0', color: 'var(--text-primary)' }}>Add New Contact</h2>
+        <h2 style={{ margin: '0 0 1.5rem 0', color: 'var(--text-primary)' }}>
+          {isEditing ? 'Edit Contact' : 'Add New Contact'}
+        </h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {/* Photo Preview */}
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem' }}>
@@ -164,7 +168,7 @@ const AddContactModal: React.FC<AddContactModalProps> = ({
                 fontWeight: '600',
               }}
             >
-              Add Contact
+              {isEditing ? 'Update Contact' : 'Add Contact'}
             </button>
             <button
               onClick={onClose}

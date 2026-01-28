@@ -29,13 +29,14 @@ router.get('/:id', async (req: Request, res: Response) => {
 // POST create contact
 router.post('/', async (req: Request, res: Response) => {
   try {
-    const { name, email, phone, company, status } = req.body;
+    const { name, email, phone, company, status, photo } = req.body;
     const [id] = await db('contacts').insert({
       name,
       email,
       phone,
       company,
       status: status || 'prospect',
+      photo: photo || null,
     });
     res.status(201).json({ id, message: 'Contact created' });
   } catch (error) {
@@ -46,15 +47,22 @@ router.post('/', async (req: Request, res: Response) => {
 // PUT update contact
 router.put('/:id', async (req: Request, res: Response) => {
   try {
-    const { name, email, phone, company, status } = req.body;
-    await db('contacts').where('id', req.params.id).update({
+    const { name, email, phone, company, status, photo } = req.body;
+    const updateData: any = {
       name,
       email,
       phone,
       company,
       status,
       updatedAt: new Date(),
-    });
+    };
+    
+    // Only update photo if provided (to avoid overwriting with undefined)
+    if (photo !== undefined) {
+      updateData.photo = photo;
+    }
+    
+    await db('contacts').where('id', req.params.id).update(updateData);
     res.json({ message: 'Contact updated' });
   } catch (error) {
     res.status(500).json({ error: 'Failed to update contact', details: error });

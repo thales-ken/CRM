@@ -7,10 +7,49 @@ const MobileNav: React.FC = () => {
   const isActive = (path: string) => location.pathname === path;
 
   const navItems = [
-    { path: '/', label: 'Dashboard', icon: '📊' },
-    { path: '/contacts', label: 'Contacts', icon: '👥' },
-    { path: '/deals', label: 'Deals', icon: '🎯' },
-    { path: '/reports', label: 'Reports', icon: '📈' },
+    { 
+      path: '/', 
+      label: 'Dashboard', 
+      icon: (active: boolean) => (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{ marginBottom: '4px' }}>
+          <rect x="3" y="3" width="7" height="7" stroke={active ? '#2563eb' : '#d1d5db'} strokeWidth="2"/>
+          <rect x="14" y="3" width="7" height="7" stroke={active ? '#2563eb' : '#d1d5db'} strokeWidth="2"/>
+          <rect x="3" y="14" width="7" height="7" stroke={active ? '#2563eb' : '#d1d5db'} strokeWidth="2"/>
+          <rect x="14" y="14" width="7" height="7" stroke={active ? '#2563eb' : '#d1d5db'} strokeWidth="2"/>
+        </svg>
+      )
+    },
+    { 
+      path: '/contacts', 
+      label: 'Contacts', 
+      icon: (active: boolean) => (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{ marginBottom: '4px' }}>
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke={active ? '#2563eb' : '#d1d5db'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="12" cy="7" r="4" stroke={active ? '#2563eb' : '#d1d5db'} strokeWidth="2"/>
+        </svg>
+      )
+    },
+    { 
+      path: '/deals', 
+      label: 'Deals', 
+      icon: (active: boolean) => (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{ marginBottom: '4px' }}>
+          <path d="M3 3v18h18" stroke={active ? '#2563eb' : '#d1d5db'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M18 17V9M13 17v-6M8 17v-3" stroke={active ? '#2563eb' : '#d1d5db'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )
+    },
+    { 
+      path: '/reports', 
+      label: 'Leads', 
+      icon: (active: boolean) => (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{ marginBottom: '4px' }}>
+          <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke={active ? '#2563eb' : '#d1d5db'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <rect x="9" y="3" width="6" height="4" rx="1" stroke={active ? '#2563eb' : '#d1d5db'} strokeWidth="2"/>
+          <path d="M9 12h6M9 16h6" stroke={active ? '#2563eb' : '#d1d5db'} strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      )
+    },
   ];
 
   return (
@@ -19,40 +58,51 @@ const MobileNav: React.FC = () => {
       bottom: 0,
       left: 0,
       right: 0,
-      background: 'var(--primary)',
-      color: '#fff',
-      boxShadow: '0 -2px 8px rgba(0,0,0,0.1)',
+      background: '#fff',
+      backdropFilter: 'blur(10px)',
+      borderTop: '1px solid #e5e7eb',
+      boxShadow: '0 -1px 3px rgba(0, 0, 0, 0.05)',
       zIndex: 100,
-      borderTop: '1px solid rgba(255,255,255,0.1)',
+      paddingBottom: 'env(safe-area-inset-bottom)',
     }}>
       <div style={{
         display: 'flex',
         justifyContent: 'space-around',
         alignItems: 'center',
-        padding: '0.5rem 0',
+        padding: '0.75rem 0 0.5rem 0',
+        maxWidth: '600px',
+        margin: '0 auto',
       }}>
-        {navItems.map((item) => (
-          <Link
-            key={item.path}
-            to={item.path}
-            style={{
-              flex: 1,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '0.75rem',
-              textDecoration: 'none',
-              color: isActive(item.path) ? '#fff' : 'rgba(255,255,255,0.7)',
-              borderTop: isActive(item.path) ? '3px solid #fff' : '3px solid transparent',
-              transition: 'all 0.2s',
-              fontSize: '0.75rem',
-            }}
-          >
-            <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>{item.icon}</div>
-            <div style={{ fontSize: '0.65rem', fontWeight: '500' }}>{item.label}</div>
-          </Link>
-        ))}
+        {navItems.map((item) => {
+          const active = isActive(item.path);
+          return (
+            <Link
+              key={item.path}
+              to={item.path}
+              style={{
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '0.5rem',
+                textDecoration: 'none',
+                color: active ? '#2563eb' : '#9ca3af',
+                transition: 'all 0.2s ease',
+                position: 'relative',
+              }}
+            >
+              {item.icon(active)}
+              <div style={{ 
+                fontSize: '0.7rem', 
+                fontWeight: active ? '600' : '400',
+                marginTop: '0.25rem',
+              }}>
+                {item.label}
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </nav>
   );
