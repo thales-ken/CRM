@@ -17,6 +17,7 @@ const NavBar: React.FC = () => {
       zIndex: 100,
       display: 'flex',
       alignItems: 'center',
+      minHeight: '60px',
     }}>
       <div style={{
         maxWidth: '1400px',
@@ -25,13 +26,15 @@ const NavBar: React.FC = () => {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        gap: '1rem',
+        flexWrap: 'wrap',
       }}>
         {/* Logo/Brand */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
           gap: '0.5rem',
-          marginRight: '3rem',
+          marginRight: '1rem',
           flexShrink: 0,
         }}>
           <div style={{
@@ -63,6 +66,8 @@ const NavBar: React.FC = () => {
           margin: 0, 
           padding: 0,
           flex: 1,
+          flexWrap: 'wrap',
+          alignItems: 'center',
         }}>
           <li>
             <Link to="/" style={{
@@ -121,7 +126,7 @@ const NavBar: React.FC = () => {
               transition: 'all 0.2s',
               background: isActive('/reports') ? '#eff6ff' : 'transparent',
             }}>
-              Leads
+              Analytics
             </Link>
           </li>
           <li>
@@ -142,7 +147,7 @@ const NavBar: React.FC = () => {
         </ul>
 
         {/* Right side actions */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
           <button style={{
             background: 'transparent',
             border: 'none',

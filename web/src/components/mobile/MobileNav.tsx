@@ -41,7 +41,7 @@ const MobileNav: React.FC = () => {
     },
     { 
       path: '/reports', 
-      label: 'Leads', 
+      label: 'Analytics', 
       icon: (active: boolean) => (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{ marginBottom: '4px' }}>
           <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke={active ? '#2563eb' : '#d1d5db'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
