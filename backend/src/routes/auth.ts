@@ -51,7 +51,6 @@ router.post('/login', async (req: Request, res: Response) => {
       token,
     });
   } catch (error) {
-    console.error('Login error:', error);
     res.status(500).json({ message: 'Login failed' });
   }
 });
@@ -102,7 +101,6 @@ router.post('/register', async (req: Request, res: Response) => {
       token,
     });
   } catch (error) {
-    console.error('Register error:', error);
     res.status(500).json({ message: 'Registration failed' });
   }
 });
@@ -125,7 +123,6 @@ router.get('/verify', authenticate, async (req: AuthRequest, res: Response) => {
     const { password: _, ...userWithoutPassword } = user;
     res.json(userWithoutPassword);
   } catch (error) {
-    console.error('Verify error:', error);
     res.status(500).json({ message: 'Verification failed' });
   }
 });
@@ -146,7 +143,6 @@ router.get('/me', authenticate, async (req: AuthRequest, res: Response) => {
     const { password: _, ...userWithoutPassword } = user;
     res.json(userWithoutPassword);
   } catch (error) {
-    console.error('Get user error:', error);
     res.status(500).json({ message: 'Failed to get user' });
   }
 });

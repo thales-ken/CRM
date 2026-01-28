@@ -51,7 +51,6 @@ const Dashboard: React.FC = () => {
         setActivities(activitiesData);
         setError(null);
       } catch (err) {
-        console.error('Dashboard fetch error:', err);
         setError(err instanceof Error ? err.message : 'Failed to fetch data');
       } finally {
         setLoading(false);
@@ -129,7 +128,6 @@ const Dashboard: React.FC = () => {
       setDeals(updatedDeals);
       showToast('Deal added successfully! 🎉');
     } catch (err) {
-      console.error('Failed to add deal:', err);
       showToast('Failed to add deal', 'error');
     }
   };
@@ -147,7 +145,6 @@ const Dashboard: React.FC = () => {
       setContacts(updatedContacts);
       showToast('Contact added successfully! 👤');
     } catch (err) {
-      console.error('Failed to add contact:', err);
       showToast('Failed to add contact', 'error');
     }
   };
@@ -183,7 +180,6 @@ const Dashboard: React.FC = () => {
       setNewActivity({ type: 'call', description: '', date: '' });
       showToast(`Activity added successfully! 📝`);
     } catch (err) {
-      console.error('Failed to add activity:', err);
       showToast('Failed to add activity', 'error');
     }
   };
@@ -203,7 +199,6 @@ const Dashboard: React.FC = () => {
       setNewMeeting({ title: '', date: '', attendees: '' });
       showToast('Meeting scheduled successfully! 📅');
     } catch (err) {
-      console.error('Failed to schedule meeting:', err);
       showToast('Failed to schedule meeting', 'error');
     }
   };

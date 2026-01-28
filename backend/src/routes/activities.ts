@@ -18,10 +18,8 @@ router.get('/', async (req: AuthRequest, res: Response) => {
         'users.email as userEmail'
       )
       .orderBy('activities.createdAt', 'desc');
-    console.log('[Activity GET] Returned activities:', activities.length, 'items'); // Debug log
     res.json(activities);
   } catch (error) {
-    console.error('[Activity GET] Error:', error); // Debug log
     res.status(500).json({ error: 'Failed to fetch activities', details: error });
   }
 });
@@ -51,7 +49,6 @@ router.get('/:id', async (req: AuthRequest, res: Response) => {
 router.post('/', async (req: AuthRequest, res: Response) => {
   try {
     const { type, description, date, contactId, dealId } = req.body;
-    console.log('[Activity POST] User info:', req.user); // Debug log
     
     const [id] = await db('activities').insert({
       type,
@@ -61,8 +58,6 @@ router.post('/', async (req: AuthRequest, res: Response) => {
       dealId,
       userId: req.user?.id, // Add the authenticated user's ID
     });
-    
-    console.log('[Activity POST] Created activity:', id, 'with userId:', req.user?.id); // Debug log
     
     // Fetch the created activity with user information
     const createdActivity = await db('activities')
@@ -75,11 +70,8 @@ router.post('/', async (req: AuthRequest, res: Response) => {
       .where('activities.id', id)
       .first();
     
-    console.log('[Activity POST] Created activity result:', createdActivity); // Debug log
-    
     res.status(201).json(createdActivity);
   } catch (error) {
-    console.error('[Activity POST] Error:', error); // Debug log
     res.status(500).json({ error: 'Failed to create activity', details: error });
   }
 });

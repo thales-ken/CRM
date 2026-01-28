@@ -54,7 +54,6 @@ const AppLayout: React.FC = () => {
         {!isMobile && <NavBar />}
         <div style={{
           padding: isMobile ? '1rem' : '2rem',
-          background: 'var(--bg-primary)',
           flex: 1,
           minHeight: isMobile ? 'calc(100vh - 80px)' : 'calc(100vh - 60px)',
           paddingBottom: isMobile ? 'calc(1rem + 70px)' : '1rem',
@@ -83,6 +82,6 @@ const App: React.FC = () => {
       </AuthProvider>
     </ThemeProvider>
   );
-};;
+};
 
 export default App;

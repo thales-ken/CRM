@@ -14,7 +14,6 @@ export interface AuthRequest extends Request {
 
 export function authenticate(req: AuthRequest, res: Response, next: NextFunction) {
   const token = req.headers.authorization?.split(' ')[1];
-  console.log('[Auth] Token from header:', token ? `${token.slice(0, 20)}...` : 'NO TOKEN');
 
   if (!token) {
     return res.status(401).json({ message: 'Missing authentication token' });
@@ -23,10 +22,8 @@ export function authenticate(req: AuthRequest, res: Response, next: NextFunction
   try {
     const decoded = jwt.verify(token, JWT_SECRET) as any;
     req.user = decoded;
-    console.log('[Auth] Decoded user:', decoded);
     next();
   } catch (error) {
-    console.error('[Auth] Token verification failed:', error);
     return res.status(401).json({ message: 'Invalid or expired token' });
   }
 }
