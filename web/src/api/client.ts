@@ -1,5 +1,14 @@
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
 
+// Helper to get auth headers
+const getAuthHeaders = (): HeadersInit => {
+  const token = localStorage.getItem('authToken');
+  return {
+    'Content-Type': 'application/json',
+    ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
+  };
+};
+
 export interface Contact {
   id: number;
   name: string;
@@ -29,6 +38,10 @@ export interface Activity {
   date: string;
   contactId?: number;
   dealId?: number;
+  userId?: number;
+  userName?: string;
+  userEmail?: string;
+  createdAt?: string;
 }
 
 // Contacts API
@@ -116,25 +129,36 @@ export const dealsAPI = {
 // Activities API
 export const activitiesAPI = {
   async getAll(): Promise<Activity[]> {
-    const res = await fetch(`${API_BASE_URL}/activities`);
+    const res = await fetch(`${API_BASE_URL}/activities`, {
+      headers: getAuthHeaders(),
+    });
     if (!res.ok) throw new Error('Failed to fetch activities');
     return res.json();
   },
 
   async getById(id: number): Promise<Activity> {
-    const res = await fetch(`${API_BASE_URL}/activities/${id}`);
+    const res = await fetch(`${API_BASE_URL}/activities/${id}`, {
+      headers: getAuthHeaders(),
+    });
     if (!res.ok) throw new Error('Failed to fetch activity');
     return res.json();
   },
 
   async create(data: Omit<Activity, 'id'>): Promise<Activity> {
+    const token = localStorage.getItem('authToken');
+    console.log('[activitiesAPI.create] Token:', token ? `${token.slice(0, 20)}...` : 'NO TOKEN');
     const res = await fetch(`${API_BASE_URL}/activities`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: getAuthHeaders(),
       body: JSON.stringify(data),
     });
-    if (!res.ok) throw new Error('Failed to create activity');
-    return res.json();
+    if (!res.ok) {
+      const error = await res.text();
+      throw new Error(`Failed to create activity: ${error}`);
+    }
+    const result = await res.json();
+    console.log('[activitiesAPI.create] Result:', result);
+    return result;
   },
 
   async update(id: number, data: Partial<Activity>): Promise<void> {

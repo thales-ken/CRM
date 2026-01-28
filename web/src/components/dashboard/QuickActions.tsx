@@ -5,7 +5,7 @@ interface QuickActionsProps {
   isMobile: boolean;
   onAddDeal: () => void;
   onAddContact: () => void;
-  onCallLog: () => void;
+  onAddActivity: () => void;
   onScheduleMeeting: () => void;
 }
 
@@ -13,7 +13,7 @@ const QuickActions: React.FC<QuickActionsProps> = ({
   isMobile,
   onAddDeal,
   onAddContact,
-  onCallLog,
+  onAddActivity,
   onScheduleMeeting,
 }) => {
   return (
@@ -39,10 +39,10 @@ const QuickActions: React.FC<QuickActionsProps> = ({
           onClick={onAddContact}
         />
         <FeatureCard
-          icon="📞"
-          title="Call Log"
-          description="Record and log your client calls"
-          onClick={onCallLog}
+          icon="�"
+          title="Add Activity"
+          description="Create a call, email, or meeting note"
+          onClick={onAddActivity}
         />
         <FeatureCard
           icon="📅"

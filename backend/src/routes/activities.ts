@@ -1,22 +1,43 @@
 import { Router, Request, Response } from 'express';
 import { db } from '../db';
+import { authenticate, AuthRequest } from '../middleware/auth';
 
 const router = Router();
 
-// GET all activities
-router.get('/', async (req: Request, res: Response) => {
+// Apply authentication to all routes
+router.use(authenticate);
+
+// GET all activities with user info
+router.get('/', async (req: AuthRequest, res: Response) => {
   try {
-    const activities = await db('activities').select('*');
+    const activities = await db('activities')
+      .leftJoin('users', 'activities.userId', 'users.id')
+      .select(
+        'activities.*',
+        'users.name as userName',
+        'users.email as userEmail'
+      )
+      .orderBy('activities.createdAt', 'desc');
+    console.log('[Activity GET] Returned activities:', activities.length, 'items'); // Debug log
     res.json(activities);
   } catch (error) {
+    console.error('[Activity GET] Error:', error); // Debug log
     res.status(500).json({ error: 'Failed to fetch activities', details: error });
   }
 });
 
 // GET activity by ID
-router.get('/:id', async (req: Request, res: Response) => {
+router.get('/:id', async (req: AuthRequest, res: Response) => {
   try {
-    const activity = await db('activities').where('id', req.params.id).first();
+    const activity = await db('activities')
+      .leftJoin('users', 'activities.userId', 'users.id')
+      .select(
+        'activities.*',
+        'users.name as userName',
+        'users.email as userEmail'
+      )
+      .where('activities.id', req.params.id)
+      .first();
     if (!activity) {
       return res.status(404).json({ error: 'Activity not found' });
     }
@@ -27,18 +48,38 @@ router.get('/:id', async (req: Request, res: Response) => {
 });
 
 // POST create activity
-router.post('/', async (req: Request, res: Response) => {
+router.post('/', async (req: AuthRequest, res: Response) => {
   try {
     const { type, description, date, contactId, dealId } = req.body;
+    console.log('[Activity POST] User info:', req.user); // Debug log
+    
     const [id] = await db('activities').insert({
       type,
       description,
       date,
       contactId,
       dealId,
+      userId: req.user?.id, // Add the authenticated user's ID
     });
-    res.status(201).json({ id, message: 'Activity created' });
+    
+    console.log('[Activity POST] Created activity:', id, 'with userId:', req.user?.id); // Debug log
+    
+    // Fetch the created activity with user information
+    const createdActivity = await db('activities')
+      .leftJoin('users', 'activities.userId', 'users.id')
+      .select(
+        'activities.*',
+        'users.name as userName',
+        'users.email as userEmail'
+      )
+      .where('activities.id', id)
+      .first();
+    
+    console.log('[Activity POST] Created activity result:', createdActivity); // Debug log
+    
+    res.status(201).json(createdActivity);
   } catch (error) {
+    console.error('[Activity POST] Error:', error); // Debug log
     res.status(500).json({ error: 'Failed to create activity', details: error });
   }
 });

@@ -1,13 +1,12 @@
 import multer from 'multer';
 import path from 'path';
-import { Request } from 'express';
 
 // Configure storage
 const storage = multer.diskStorage({
-  destination: (req: Request, file: Express.Multer.File, cb) => {
+  destination: (req: any, file: Express.Multer.File, cb) => {
     cb(null, path.join(__dirname, '../../uploads'));
   },
-  filename: (req: Request, file: Express.Multer.File, cb) => {
+  filename: (req: any, file: Express.Multer.File, cb) => {
     // Generate unique filename: timestamp-random-originalname
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
     const ext = path.extname(file.originalname);
@@ -17,7 +16,7 @@ const storage = multer.diskStorage({
 });
 
 // File filter to accept only images
-const fileFilter = (req: Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
+const fileFilter = (req: any, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
   const allowedMimeTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
   
   if (allowedMimeTypes.includes(file.mimetype)) {

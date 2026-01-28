@@ -1,10 +1,10 @@
-import { Router, Request, Response } from 'express';
+import { Router, Response } from 'express';
 import { upload } from '../middleware/upload';
 
 const router = Router();
 
 // POST upload single image
-router.post('/image', upload.single('file'), (req: Request, res: Response) => {
+router.post('/image', upload.single('file') as any, (req: any, res: Response) => {
   try {
     if (!req.file) {
       return res.status(400).json({ error: 'No file uploaded' });
@@ -28,13 +28,13 @@ router.post('/image', upload.single('file'), (req: Request, res: Response) => {
 });
 
 // POST upload multiple images
-router.post('/images', upload.array('files', 10), (req: Request, res: Response) => {
+router.post('/images', upload.array('files', 10) as any, (req: any, res: Response) => {
   try {
     if (!req.files || !Array.isArray(req.files) || req.files.length === 0) {
       return res.status(400).json({ error: 'No files uploaded' });
     }
 
-    const filesInfo = req.files.map((file) => ({
+    const filesInfo = req.files.map((file: any) => ({
       filename: file.filename,
       originalName: file.originalname,
       mimetype: file.mimetype,

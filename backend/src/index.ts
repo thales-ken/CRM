@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import { healthCheck, db } from './db';
+import authRouter from './routes/auth';
 import contactsRouter from './routes/contacts';
 import dealsRouter from './routes/deals';
 import activitiesRouter from './routes/activities';
@@ -30,6 +31,7 @@ app.get('/api/health', async (req: Request, res: Response) => {
 });
 
 // API Routes
+app.use('/api/auth', authRouter);
 app.use('/api/contacts', contactsRouter);
 app.use('/api/deals', dealsRouter);
 app.use('/api/activities', activitiesRouter);

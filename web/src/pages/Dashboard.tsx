@@ -9,7 +9,7 @@ import DashboardStats from '../components/dashboard/DashboardStats';
 import QuickActions from '../components/dashboard/QuickActions';
 import AddDealModal from '../components/dashboard/AddDealModal';
 import AddContactModal from '../components/dashboard/AddContactModal';
-import CallLogModal from '../components/dashboard/CallLogModal';
+import AddActivityModal from '../components/dashboard/AddActivityModal';
 import ScheduleMeetingModal from '../components/dashboard/ScheduleMeetingModal';
 import Toast from '../components/ui/Toast';
 import { handleImageUpload } from '../utils/fileHelpers';
@@ -24,7 +24,7 @@ const Dashboard: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [showAddDealModal, setShowAddDealModal] = useState(false);
   const [showAddContactModal, setShowAddContactModal] = useState(false);
-  const [showCallLogModal, setShowCallLogModal] = useState(false);
+  const [showAddActivityModal, setShowAddActivityModal] = useState(false);
   const [showMeetingModal, setShowMeetingModal] = useState(false);
   const [newDeal, setNewDeal] = useState<{ title: string; company: string; value: number; stage: 'negotiation' | 'proposal' | 'won' | 'lost'; probability: number }>({ title: '', company: '', value: 0, stage: 'negotiation', probability: 50 });
   const [newContact, setNewContact] = useState({ name: '', email: '', phone: '', company: '', photo: '' });
@@ -67,11 +67,34 @@ const Dashboard: React.FC = () => {
   const avgDealValue = deals.length > 0 ? Math.round(totalRevenue / deals.length) : 0;
 
   const recentActivityRows = useMemo(() => 
-    activities.slice(0, 5).map(activity => [
-      `${activity.type.charAt(0).toUpperCase()}${activity.type.slice(1)}`,
-      activity.description,
-      activity.date,
-    ]),
+    activities
+      .sort((a, b) => {
+        // Use createdAt for precise ordering (includes milliseconds)
+        const timeA = new Date(a.createdAt || a.date).getTime();
+        const timeB = new Date(b.createdAt || b.date).getTime();
+        return timeB - timeA; // Most recent first
+      })
+      .slice(0, 5)
+      .map(activity => {
+        const createdDate = new Date(activity.createdAt || activity.date);
+        const formattedDate = createdDate.toLocaleDateString('en-US', { 
+          month: 'short', 
+          day: 'numeric', 
+          year: 'numeric' 
+        });
+        const formattedTime = createdDate.toLocaleTimeString('en-US', { 
+          hour: '2-digit', 
+          minute: '2-digit', 
+          second: '2-digit' 
+        });
+        
+        return [
+          `${activity.type.charAt(0).toUpperCase()}${activity.type.slice(1)}`,
+          activity.description,
+          `${formattedDate} ${formattedTime}`,
+          activity.userName || 'Unknown',
+        ];
+      }),
     [activities]
   );
 
@@ -140,25 +163,28 @@ const Dashboard: React.FC = () => {
     );
   };
 
-  const handleAddCallLog = async () => {
+  const handleAddActivity = async () => {
     try {
       if (!newActivity.description.trim()) {
-        showToast('Please enter call notes', 'error');
+        showToast('Please enter activity details', 'error');
         return;
       }
       await activitiesAPI.create({ 
-        type: 'call', 
+        type: newActivity.type as 'call' | 'email' | 'meeting' | 'note', 
         description: newActivity.description,
         date: new Date().toISOString().split('T')[0]
       });
-      setShowCallLogModal(false);
-      setNewActivity({ type: 'call', description: '', date: '' });
+      
+      // Refetch activities to update Recent Activity in real-time
       const updatedActivities = await activitiesAPI.getAll();
       setActivities(updatedActivities);
-      showToast('Call logged successfully! 📞');
+      
+      setShowAddActivityModal(false);
+      setNewActivity({ type: 'call', description: '', date: '' });
+      showToast(`Activity added successfully! 📝`);
     } catch (err) {
-      console.error('Failed to log call:', err);
-      showToast('Failed to log call', 'error');
+      console.error('Failed to add activity:', err);
+      showToast('Failed to add activity', 'error');
     }
   };
 
@@ -175,8 +201,6 @@ const Dashboard: React.FC = () => {
       });
       setShowMeetingModal(false);
       setNewMeeting({ title: '', date: '', attendees: '' });
-      const updatedActivities = await activitiesAPI.getAll();
-      setActivities(updatedActivities);
       showToast('Meeting scheduled successfully! 📅');
     } catch (err) {
       console.error('Failed to schedule meeting:', err);
@@ -213,7 +237,7 @@ const Dashboard: React.FC = () => {
             isMobile={isMobile}
             onAddDeal={() => setShowAddDealModal(true)}
             onAddContact={() => setShowAddContactModal(true)}
-            onCallLog={() => setShowCallLogModal(true)}
+            onAddActivity={() => setShowAddActivityModal(true)}
             onScheduleMeeting={() => setShowMeetingModal(true)}
           />
 
@@ -229,7 +253,7 @@ const Dashboard: React.FC = () => {
             <h2 style={{ marginTop: 0, marginBottom: '1rem', color: 'var(--text-primary)' }}>Recent Activity</h2>
             <DataTable
               isMobile={isMobile}
-              headers={['Type', 'Description', 'Date']}
+              headers={['Type', 'Description', 'Date & Time', 'User']}
               rows={recentActivityRows}
             />
           </div>
@@ -270,12 +294,14 @@ const Dashboard: React.FC = () => {
         onSubmit={handleAddContact}
       />
 
-      <CallLogModal
-        isOpen={showCallLogModal}
+      <AddActivityModal
+        isOpen={showAddActivityModal}
+        type={newActivity.type}
         description={newActivity.description}
-        onChange={(description) => setNewActivity({ ...newActivity, description })}
-        onClose={() => setShowCallLogModal(false)}
-        onSubmit={handleAddCallLog}
+        onTypeChange={(type) => setNewActivity({ ...newActivity, type })}
+        onDescriptionChange={(description) => setNewActivity({ ...newActivity, description })}
+        onClose={() => setShowAddActivityModal(false)}
+        onSubmit={handleAddActivity}
       />
 
       <ScheduleMeetingModal
