@@ -23,7 +23,7 @@ const ContactsStats: React.FC<ContactsStatsProps> = ({
       marginBottom: '2rem',
     }}>
       <div style={{
-        background: '#fff',
+        background: 'var(--bg-secondary)',
         border: '1px solid var(--border)',
         padding: '1.5rem',
         borderRadius: '12px',
@@ -34,7 +34,7 @@ const ContactsStats: React.FC<ContactsStatsProps> = ({
         <div style={{ fontSize: '0.85rem', fontWeight: '500', color: 'var(--text-secondary)', marginTop: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Total Contacts</div>
       </div>
       <div style={{
-        background: '#fff',
+        background: 'var(--bg-secondary)',
         border: '1px solid var(--border)',
         padding: '1.5rem',
         borderRadius: '12px',
@@ -47,7 +47,7 @@ const ContactsStats: React.FC<ContactsStatsProps> = ({
         <div style={{ fontSize: '0.85rem', fontWeight: '500', color: 'var(--text-secondary)', marginTop: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Active</div>
       </div>
       <div style={{
-        background: '#fff',
+        background: 'var(--bg-secondary)',
         border: '1px solid var(--border)',
         padding: '1.5rem',
         borderRadius: '12px',
@@ -60,7 +60,7 @@ const ContactsStats: React.FC<ContactsStatsProps> = ({
         <div style={{ fontSize: '0.85rem', fontWeight: '500', color: 'var(--text-secondary)', marginTop: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Prospects</div>
       </div>
       <div style={{
-        background: '#fff',
+        background: 'var(--bg-secondary)',
         border: '1px solid var(--border)',
         padding: '1.5rem',
         borderRadius: '12px',

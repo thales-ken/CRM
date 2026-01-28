@@ -25,7 +25,7 @@ const CallLogModal: React.FC<CallLogModalProps> = ({ isOpen, onClose, onSubmit, 
       zIndex: 1000,
     }}>
       <div style={{
-        background: '#fff',
+        background: 'var(--bg-secondary)',
         borderRadius: '12px',
         padding: '2rem',
         maxWidth: '500px',

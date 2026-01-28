@@ -16,7 +16,7 @@ const DataTable: React.FC<TableProps> = ({ headers, rows, onRowClick, isMobile =
             key={rowIdx}
             onClick={() => onRowClick?.(rowIdx)}
             style={{
-              background: 'white',
+              background: 'var(--bg-secondary)',
               border: '1px solid var(--border)',
               borderRadius: '8px',
               padding: '1rem',
@@ -32,7 +32,7 @@ const DataTable: React.FC<TableProps> = ({ headers, rows, onRowClick, isMobile =
             }}
             onMouseLeave={(e) => {
               if (onRowClick) {
-                (e.currentTarget as HTMLDivElement).style.background = 'white';
+                (e.currentTarget as HTMLDivElement).style.background = 'var(--bg-secondary)';
                 (e.currentTarget as HTMLDivElement).style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
               }
             }}
@@ -92,7 +92,7 @@ const DataTable: React.FC<TableProps> = ({ headers, rows, onRowClick, isMobile =
               style={{
                 borderBottom: '1px solid var(--border)',
                 cursor: onRowClick ? 'pointer' : 'default',
-                background: onRowClick ? 'var(--bg-primary)' : 'white',
+                background: 'var(--bg-secondary)',
                 transition: 'background 0.2s',
               }}
               onMouseEnter={(e) => {

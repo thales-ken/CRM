@@ -52,22 +52,22 @@ const ContactsListMobile: React.FC<ContactsListMobileProps> = ({
         <div
           key={contact.id}
           style={{
-            background: '#fff',
+            background: 'var(--bg-secondary)',
             borderRadius: '16px',
             padding: '1rem',
             display: 'flex',
             alignItems: 'center',
             gap: '0.75rem',
             cursor: 'pointer',
-            border: '1px solid #e5e7eb',
+            border: '1px solid var(--border)',
             transition: 'all 0.2s ease',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = '#f9fafb';
+            e.currentTarget.style.background = 'var(--bg-secondary)';
             e.currentTarget.style.transform = 'translateY(-2px)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = '#fff';
+            e.currentTarget.style.background = 'var(--bg-secondary)';
             e.currentTarget.style.transform = 'translateY(0)';
           }}
         >
@@ -91,7 +91,7 @@ const ContactsListMobile: React.FC<ContactsListMobileProps> = ({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            border: '2px solid #e5e7eb',
+            border: '2px solid var(--border)',
           }}>
             {contact.photo ? (
               <img 
@@ -109,7 +109,7 @@ const ContactsListMobile: React.FC<ContactsListMobileProps> = ({
           {/* Contact Info */}
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{
-              color: '#1a1a1a',
+              color: 'var(--text-primary)',
               fontSize: '1rem',
               fontWeight: '600',
               marginBottom: '0.25rem',

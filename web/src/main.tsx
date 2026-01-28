@@ -27,6 +27,17 @@ style.textContent = `
     --border: #c5d1d3;
     --hover: #a9babc;
   }
+
+  html[style*="color-scheme: dark"] {
+    --primary: #3b82f6;
+    --primary-dark: #1e40af;
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --border: #334155;
+    --hover: #475569;
+  }
   
   * {
     margin: 0;
@@ -41,6 +52,8 @@ style.textContent = `
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   code {

@@ -21,7 +21,7 @@ const Reports: React.FC = () => {
 
   return (
     <div style={{ 
-      background: '#f8f9fa',
+      background: 'var(--bg-primary)',
       minHeight: '100vh',
       padding: 'clamp(1rem, 4vw, 2rem)',
     }}>
@@ -39,7 +39,7 @@ const Reports: React.FC = () => {
             margin: 0, 
             fontSize: 'clamp(1.5rem, 4vw, 1.875rem)',
             fontWeight: '700',
-            color: '#1a1a1a',
+            color: 'var(--text-primary)',
           }}>
             Dashboard Overview
           </h1>
@@ -59,7 +59,7 @@ const Reports: React.FC = () => {
               style={{
                 width: '100%',
                 padding: '0.625rem 0.75rem 0.625rem 2.5rem',
-                border: '1px solid #e5e7eb',
+                border: '1px solid var(--border)',
                 borderRadius: '6px',
                 fontSize: '0.875rem',
                 outline: 'none',
@@ -76,10 +76,10 @@ const Reports: React.FC = () => {
         }}>
           {/* Total Revenue */}
           <div style={{
-            background: '#fff',
+            background: 'var(--bg-secondary)',
             borderRadius: '12px',
             padding: '1.5rem',
-            border: '1px solid #e5e7eb',
+            border: '1px solid var(--border)',
           }}>
             <div style={{ 
               display: 'flex', 
@@ -98,7 +98,7 @@ const Reports: React.FC = () => {
                 +12.4%
               </span>
             </div>
-            <div style={{ fontSize: '2.25rem', fontWeight: '700', color: '#1a1a1a', marginBottom: '0.5rem' }}>
+            <div style={{ fontSize: '2.25rem', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
               $1,240,000
             </div>
             <div style={{ fontSize: '0.75rem', color: '#9ca3af' }}>
@@ -108,10 +108,10 @@ const Reports: React.FC = () => {
 
           {/* New Leads */}
           <div style={{
-            background: '#fff',
+            background: 'var(--bg-secondary)',
             borderRadius: '12px',
             padding: '1.5rem',
-            border: '1px solid #e5e7eb',
+            border: '1px solid var(--border)',
           }}>
             <div style={{ 
               display: 'flex', 
@@ -130,7 +130,7 @@ const Reports: React.FC = () => {
                 +5.2%
               </span>
             </div>
-            <div style={{ fontSize: '2.25rem', fontWeight: '700', color: '#1a1a1a', marginBottom: '0.5rem' }}>
+            <div style={{ fontSize: '2.25rem', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
               854
             </div>
             <div style={{ fontSize: '0.75rem', color: '#9ca3af' }}>
@@ -140,10 +140,10 @@ const Reports: React.FC = () => {
 
           {/* Win Rate */}
           <div style={{
-            background: '#fff',
+            background: 'var(--bg-secondary)',
             borderRadius: '12px',
             padding: '1.5rem',
-            border: '1px solid #e5e7eb',
+            border: '1px solid var(--border)',
           }}>
             <div style={{ 
               display: 'flex', 
@@ -162,7 +162,7 @@ const Reports: React.FC = () => {
                 -2.1%
               </span>
             </div>
-            <div style={{ fontSize: '2.25rem', fontWeight: '700', color: '#1a1a1a', marginBottom: '0.5rem' }}>
+            <div style={{ fontSize: '2.25rem', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
               64.5%
             </div>
             <div style={{ fontSize: '0.75rem', color: '#9ca3af' }}>
@@ -174,10 +174,10 @@ const Reports: React.FC = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '1.5rem' }}>
           {/* Sales Funnel Trends */}
           <div style={{
-            background: '#fff',
+            background: 'var(--bg-secondary)',
             borderRadius: '12px',
             padding: '1.5rem',
-            border: '1px solid #e5e7eb',
+            border: '1px solid var(--border)',
           }}>
             <div style={{ 
               display: 'flex', 
@@ -185,13 +185,13 @@ const Reports: React.FC = () => {
               alignItems: 'center',
               marginBottom: '1.5rem',
             }}>
-              <h2 style={{ margin: 0, fontSize: '1.125rem', fontWeight: '600', color: '#1a1a1a' }}>
+              <h2 style={{ margin: 0, fontSize: '1.125rem', fontWeight: '600', color: 'var(--text-primary)' }}>
                 Sales Funnel Trends
               </h2>
               <span style={{ fontSize: '0.75rem', color: '#6b7280' }}>Last 30 days</span>
             </div>
             <div style={{ marginBottom: '1rem' }}>
-              <span style={{ fontSize: '2rem', fontWeight: '700', color: '#1a1a1a' }}>4.2k</span>
+              <span style={{ fontSize: '2rem', fontWeight: '700', color: 'var(--text-primary)' }}>4.2k</span>
               <span style={{ fontSize: '0.875rem', color: '#6b7280', marginLeft: '0.5rem' }}>total leads</span>
             </div>
             <div style={{ height: '200px', position: 'relative' }}>
@@ -247,10 +247,10 @@ const Reports: React.FC = () => {
 
           {/* Tasks for Today */}
           <div style={{
-            background: '#fff',
+            background: 'var(--bg-secondary)',
             borderRadius: '12px',
             padding: '1.5rem',
-            border: '1px solid #e5e7eb',
+            border: '1px solid var(--border)',
           }}>
             <div style={{ 
               display: 'flex', 
@@ -258,7 +258,7 @@ const Reports: React.FC = () => {
               alignItems: 'center',
               marginBottom: '1.5rem',
             }}>
-              <h2 style={{ margin: 0, fontSize: '1.125rem', fontWeight: '600', color: '#1a1a1a' }}>
+              <h2 style={{ margin: 0, fontSize: '1.125rem', fontWeight: '600', color: 'var(--text-primary)' }}>
                 Tasks for Today
               </h2>
               <a href="#" style={{ fontSize: '0.875rem', color: '#2563eb', textDecoration: 'none' }}>View All</a>
@@ -267,7 +267,7 @@ const Reports: React.FC = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <input type="checkbox" style={{ width: '18px', height: '18px', cursor: 'pointer' }} />
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '0.875rem', fontWeight: '500', color: '#1a1a1a' }}>Follow up: Sarah Jenkins</div>
+                  <div style={{ fontSize: '0.875rem', fontWeight: '500', color: 'var(--text-primary)' }}>Follow up: Sarah Jenkins</div>
                   <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>Due 2:00 PM</div>
                 </div>
                 <span style={{ fontSize: '1rem' }}>🚩</span>
@@ -275,7 +275,7 @@ const Reports: React.FC = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <input type="checkbox" style={{ width: '18px', height: '18px', cursor: 'pointer' }} />
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '0.875rem', fontWeight: '500', color: '#1a1a1a' }}>Prepare Q3 Forecast</div>
+                  <div style={{ fontSize: '0.875rem', fontWeight: '500', color: 'var(--text-primary)' }}>Prepare Q3 Forecast</div>
                   <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>Due 5:00 PM</div>
                 </div>
                 <span style={{ fontSize: '1rem' }}>❗</span>
@@ -283,7 +283,7 @@ const Reports: React.FC = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <input type="checkbox" style={{ width: '18px', height: '18px', cursor: 'pointer' }} />
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '0.875rem', fontWeight: '500', color: '#1a1a1a' }}>Contract: BioTech Corp</div>
+                  <div style={{ fontSize: '0.875rem', fontWeight: '500', color: 'var(--text-primary)' }}>Contract: BioTech Corp</div>
                   <div style={{ fontSize: '0.75rem', color: '#ef4444' }}>Overdue</div>
                 </div>
               </div>
@@ -294,10 +294,10 @@ const Reports: React.FC = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
           {/* Revenue vs Goal */}
           <div style={{
-            background: '#fff',
+            background: 'var(--bg-secondary)',
             borderRadius: '12px',
             padding: '1.5rem',
-            border: '1px solid #e5e7eb',
+            border: '1px solid var(--border)',
           }}>
             <div style={{ 
               display: 'flex', 
@@ -305,7 +305,7 @@ const Reports: React.FC = () => {
               alignItems: 'center',
               marginBottom: '1.5rem',
             }}>
-              <h2 style={{ margin: 0, fontSize: '1.125rem', fontWeight: '600', color: '#1a1a1a' }}>
+              <h2 style={{ margin: 0, fontSize: '1.125rem', fontWeight: '600', color: 'var(--text-primary)' }}>
                 Revenue vs Goal
               </h2>
               <div style={{ display: 'flex', gap: '1rem', fontSize: '0.75rem' }}>
@@ -314,7 +314,7 @@ const Reports: React.FC = () => {
                   <span style={{ color: '#6b7280' }}>Actual</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <div style={{ width: '12px', height: '12px', borderRadius: '2px', background: '#e5e7eb' }}></div>
+                  <div style={{ width: '12px', height: '12px', borderRadius: '2px', background: 'var(--border)' }}></div>
                   <span style={{ color: '#6b7280' }}>Goal</span>
                 </div>
               </div>
@@ -332,7 +332,7 @@ const Reports: React.FC = () => {
                     }}></div>
                     <div style={{ 
                       flex: 1, 
-                      background: '#e5e7eb', 
+                      background: 'var(--border)', 
                       borderRadius: '4px 4px 0 0',
                       height: `${(item.goal / maxRevenueValue) * 100}%`,
                       minHeight: '20px',
@@ -346,12 +346,12 @@ const Reports: React.FC = () => {
 
           {/* Recent Activity */}
           <div style={{
-            background: '#fff',
+            background: 'var(--bg-secondary)',
             borderRadius: '12px',
             padding: '1.5rem',
-            border: '1px solid #e5e7eb',
+            border: '1px solid var(--border)',
           }}>
-            <h2 style={{ margin: '0 0 1.5rem 0', fontSize: '1.125rem', fontWeight: '600', color: '#1a1a1a' }}>
+            <h2 style={{ margin: '0 0 1.5rem 0', fontSize: '1.125rem', fontWeight: '600', color: 'var(--text-primary)' }}>
               Recent Activity
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -365,7 +365,7 @@ const Reports: React.FC = () => {
                   flexShrink: 0,
                 }}></div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '0.875rem', color: '#1a1a1a', marginBottom: '0.25rem' }}>
+                  <div style={{ fontSize: '0.875rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
                     <strong>Deal Closed</strong> with Acme Corp
                   </div>
                   <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>12 mins ago • $45,000</div>
@@ -381,7 +381,7 @@ const Reports: React.FC = () => {
                   flexShrink: 0,
                 }}></div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '0.875rem', color: '#1a1a1a', marginBottom: '0.25rem' }}>
+                  <div style={{ fontSize: '0.875rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
                     <strong>Email Sent</strong> to John Doe
                   </div>
                   <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>1 hour ago • Marketing Campaign</div>
@@ -397,7 +397,7 @@ const Reports: React.FC = () => {
                   flexShrink: 0,
                 }}></div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '0.875rem', color: '#1a1a1a', marginBottom: '0.25rem' }}>
+                  <div style={{ fontSize: '0.875rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
                     <strong>New Lead</strong> created from Website
                   </div>
                   <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>3 hours ago • Organic Search</div>
@@ -413,7 +413,7 @@ const Reports: React.FC = () => {
                   flexShrink: 0,
                 }}></div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '0.875rem', color: '#1a1a1a', marginBottom: '0.25rem' }}>
+                  <div style={{ fontSize: '0.875rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
                     <strong>Meeting Scheduled</strong> with BioTech
                   </div>
                   <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>Yesterday at 4:30 PM</div>

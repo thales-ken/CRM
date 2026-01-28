@@ -32,7 +32,7 @@ const ContactDetailModal: React.FC<ContactDetailModalProps> = ({ contact, onClos
         width: '90%',
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-          <h2 style={{ margin: 0 }}>{contact.name}</h2>
+          <h2 style={{ margin: 0, color: 'var(--text-primary)' }}>{contact.name}</h2>
           <button
             onClick={onClose}
             style={{

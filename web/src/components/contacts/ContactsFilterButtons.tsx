@@ -30,8 +30,8 @@ const ContactsFilterButtons: React.FC<ContactsFilterButtonsProps> = ({
           style={{
             padding: isMobile ? '0.625rem 1.5rem' : '0.625rem 1.5rem',
             borderRadius: '24px',
-            border: activeFilter === filter ? 'none' : '1px solid #e5e7eb',
-            background: activeFilter === filter ? '#2563eb' : '#fff',
+            border: activeFilter === filter ? 'none' : '1px solid var(--border)',
+            background: activeFilter === filter ? '#2563eb' : 'var(--bg-secondary)',
             color: activeFilter === filter ? '#fff' : '#6b7280',
             fontSize: isMobile ? '0.9rem' : '0.875rem',
             fontWeight: activeFilter === filter ? '500' : '400',

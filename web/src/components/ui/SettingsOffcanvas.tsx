@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from '../../contexts/ThemeContext';
 
 interface SettingsOffcanvasProps {
   isOpen: boolean;
@@ -6,7 +7,7 @@ interface SettingsOffcanvasProps {
 }
 
 const SettingsOffcanvas: React.FC<SettingsOffcanvasProps> = ({ isOpen, onClose }) => {
-  const [darkMode, setDarkMode] = React.useState(false);
+  const { isDarkMode, toggleDarkMode } = useTheme();
 
   if (!isOpen) return null;
 
@@ -37,7 +38,7 @@ const SettingsOffcanvas: React.FC<SettingsOffcanvasProps> = ({ isOpen, onClose }
           bottom: 0,
           width: '100%',
           maxWidth: '400px',
-          background: '#fff',
+          background: 'var(--bg-secondary)',
           boxShadow: '-4px 0 24px rgba(0,0,0,0.15)',
           zIndex: 1000,
           transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
@@ -49,7 +50,7 @@ const SettingsOffcanvas: React.FC<SettingsOffcanvasProps> = ({ isOpen, onClose }
         {/* Header */}
         <div style={{
           padding: '1.5rem',
-          borderBottom: '1px solid #e5e7eb',
+          borderBottom: '1px solid var(--border)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -58,7 +59,7 @@ const SettingsOffcanvas: React.FC<SettingsOffcanvasProps> = ({ isOpen, onClose }
             margin: 0, 
             fontSize: '1.25rem', 
             fontWeight: '600',
-            color: '#1a1a1a',
+            color: 'var(--text-primary)',
           }}>
             Settings
           </h2>
@@ -103,14 +104,14 @@ const SettingsOffcanvas: React.FC<SettingsOffcanvasProps> = ({ isOpen, onClose }
               alignItems: 'center',
               justifyContent: 'space-between',
               padding: '1rem',
-              background: '#f9fafb',
+              background: 'var(--bg-secondary)',
               borderRadius: '8px',
-              border: '1px solid #e5e7eb',
+              border: '1px solid var(--border)',
             }}>
               <div>
                 <div style={{
                   fontWeight: '500',
-                  color: '#1a1a1a',
+                  color: 'var(--text-primary)',
                   marginBottom: '0.25rem',
                 }}>
                   🌙 Dark Mode
@@ -119,7 +120,7 @@ const SettingsOffcanvas: React.FC<SettingsOffcanvasProps> = ({ isOpen, onClose }
                   fontSize: '0.875rem',
                   color: '#6b7280',
                 }}>
-                  Coming soon
+                  {isDarkMode ? 'Enabled' : 'Disabled'}
                 </div>
               </div>
               <label style={{
@@ -130,19 +131,18 @@ const SettingsOffcanvas: React.FC<SettingsOffcanvasProps> = ({ isOpen, onClose }
               }}>
                 <input
                   type="checkbox"
-                  checked={darkMode}
-                  onChange={(e) => setDarkMode(e.target.checked)}
-                  disabled
+                  checked={isDarkMode}
+                  onChange={toggleDarkMode}
                   style={{ opacity: 0, width: 0, height: 0 }}
                 />
                 <span style={{
                   position: 'absolute',
-                  cursor: 'not-allowed',
+                  cursor: 'pointer',
                   top: 0,
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  background: darkMode ? '#2563eb' : '#d1d5db',
+                  background: isDarkMode ? '#2563eb' : '#d1d5db',
                   borderRadius: '24px',
                   transition: 'background 0.3s',
                 }}>
@@ -150,7 +150,7 @@ const SettingsOffcanvas: React.FC<SettingsOffcanvasProps> = ({ isOpen, onClose }
                     position: 'absolute',
                     height: '18px',
                     width: '18px',
-                    left: darkMode ? '26px' : '3px',
+                    left: isDarkMode ? '26px' : '3px',
                     bottom: '3px',
                     background: '#fff',
                     borderRadius: '50%',
@@ -176,9 +176,9 @@ const SettingsOffcanvas: React.FC<SettingsOffcanvasProps> = ({ isOpen, onClose }
             
             <div style={{
               padding: '1rem',
-              background: '#f9fafb',
+              background: 'var(--bg-secondary)',
               borderRadius: '8px',
-              border: '1px solid #e5e7eb',
+              border: '1px solid var(--border)',
               color: '#6b7280',
               fontSize: '0.875rem',
             }}>
@@ -201,9 +201,9 @@ const SettingsOffcanvas: React.FC<SettingsOffcanvasProps> = ({ isOpen, onClose }
             
             <div style={{
               padding: '1rem',
-              background: '#f9fafb',
+              background: 'var(--bg-secondary)',
               borderRadius: '8px',
-              border: '1px solid #e5e7eb',
+              border: '1px solid var(--border)',
             }}>
               <select
                 defaultValue="en"
@@ -211,7 +211,7 @@ const SettingsOffcanvas: React.FC<SettingsOffcanvasProps> = ({ isOpen, onClose }
                 style={{
                   width: '100%',
                   padding: '0.5rem',
-                  border: '1px solid #d1d5db',
+                  border: '1px solid var(--border)',
                   borderRadius: '6px',
                   fontSize: '0.875rem',
                   background: '#fff',
@@ -230,8 +230,8 @@ const SettingsOffcanvas: React.FC<SettingsOffcanvasProps> = ({ isOpen, onClose }
         {/* Footer */}
         <div style={{
           padding: '1.5rem',
-          borderTop: '1px solid #e5e7eb',
-          background: '#f9fafb',
+          borderTop: '1px solid var(--border)',
+          background: 'var(--bg-secondary)',
         }}>
           <button
             onClick={onClose}

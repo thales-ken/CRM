@@ -243,7 +243,7 @@ const Dashboard: React.FC = () => {
 
           {/* Recent Activity */}
           <div style={{
-            background: '#fff',
+            background: 'var(--bg-secondary)',
             border: '1px solid var(--border)',
             borderRadius: '12px',
             padding: '1.5rem',
@@ -260,7 +260,7 @@ const Dashboard: React.FC = () => {
 
           {/* Top Deals */}
           <div style={{
-            background: '#fff',
+            background: 'var(--bg-secondary)',
             border: '1px solid var(--border)',
             borderRadius: '8px',
             padding: '1.5rem',

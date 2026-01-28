@@ -147,7 +147,7 @@ const Contacts: React.FC = () => {
     return (
       <div style={{ 
         minHeight: '100vh', 
-        background: '#f8f9fa',
+        background: 'var(--bg-primary)',
         paddingBottom: '2rem',
       }}>
         {/* Main Content */}
@@ -169,7 +169,7 @@ const Contacts: React.FC = () => {
                   margin: '0 0 0.5rem 0', 
                   fontSize: '1.875rem',
                   fontWeight: '700',
-                  color: '#1a1a1a',
+                  color: 'var(--text-primary)',
                 }}>
                   Contact Management
                 </h1>
@@ -210,8 +210,8 @@ const Contacts: React.FC = () => {
 
           {/* Search and Filters */}
           <div style={{ 
-            background: '#fff',
-            border: '1px solid #e5e7eb',
+            background: 'var(--bg-secondary)',
+            border: '1px solid var(--border)',
             borderRadius: '8px',
             padding: '1.25rem',
             marginBottom: '1.5rem',
@@ -245,7 +245,7 @@ const Contacts: React.FC = () => {
                   style={{
                     width: '100%',
                     padding: '0.625rem 0.75rem 0.625rem 2.5rem',
-                    border: '1px solid #e5e7eb',
+                    border: '1px solid var(--border)',
                     borderRadius: '6px',
                     fontSize: '0.875rem',
                     outline: 'none',
@@ -303,9 +303,9 @@ const Contacts: React.FC = () => {
                   disabled={currentPage === 1}
                   style={{
                     padding: '0.5rem 0.75rem',
-                    border: '1px solid #e5e7eb',
+                    border: '1px solid var(--border)',
                     borderRadius: '6px',
-                    background: currentPage === 1 ? '#f3f4f6' : '#fff',
+                    background: currentPage === 1 ? 'var(--bg-primary)' : 'var(--bg-secondary)',
                     cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
                     fontSize: '0.875rem',
                     color: '#6b7280',
@@ -321,10 +321,10 @@ const Contacts: React.FC = () => {
                       onClick={() => setCurrentPage(page)}
                       style={{
                         padding: '0.5rem 0.75rem',
-                        border: '1px solid #e5e7eb',
+                        border: '1px solid var(--border)',
                         borderRadius: '6px',
-                        background: currentPage === page ? '#2563eb' : '#fff',
-                        color: currentPage === page ? '#fff' : '#374151',
+                        background: currentPage === page ? '#2563eb' : 'var(--bg-secondary)',
+                        color: currentPage === page ? '#fff' : 'var(--text-primary)',
                         cursor: 'pointer',
                         fontSize: '0.875rem',
                         fontWeight: currentPage === page ? '600' : '400',
@@ -342,10 +342,10 @@ const Contacts: React.FC = () => {
                       onClick={() => setCurrentPage(totalPages)}
                       style={{
                         padding: '0.5rem 0.75rem',
-                        border: '1px solid #e5e7eb',
+                        border: '1px solid var(--border)',
                         borderRadius: '6px',
-                        background: currentPage === totalPages ? '#2563eb' : '#fff',
-                        color: currentPage === totalPages ? '#fff' : '#374151',
+                        background: currentPage === totalPages ? '#2563eb' : 'var(--bg-secondary)',
+                        color: currentPage === totalPages ? '#fff' : 'var(--text-primary)',
                         cursor: 'pointer',
                         fontSize: '0.875rem',
                         minWidth: '36px',
@@ -360,9 +360,9 @@ const Contacts: React.FC = () => {
                   disabled={currentPage === totalPages}
                   style={{
                     padding: '0.5rem 0.75rem',
-                    border: '1px solid #e5e7eb',
+                    border: '1px solid var(--border)',
                     borderRadius: '6px',
-                    background: currentPage === totalPages ? '#f3f4f6' : '#fff',
+                    background: currentPage === totalPages ? 'var(--bg-primary)' : 'var(--bg-secondary)',
                     cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
                     fontSize: '0.875rem',
                     color: '#6b7280',
@@ -390,7 +390,7 @@ const Contacts: React.FC = () => {
   return (
     <div style={{
       minHeight: '100vh',
-      background: '#f8f9fa',
+      background: 'var(--bg-primary)',
       paddingBottom: isMobile ? '80px' : '2rem',
     }}>
       {/* Header */}
@@ -399,10 +399,10 @@ const Contacts: React.FC = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        borderBottom: '1px solid #e5e7eb',
+        borderBottom: '1px solid var(--border)',
       }}>
         <h1 style={{
-          color: '#1a1a1a',
+          color: 'var(--text-primary)',
           fontSize: isMobile ? '1.5rem' : '1.75rem',
           fontWeight: '600',
           margin: 0,
@@ -436,8 +436,8 @@ const Contacts: React.FC = () => {
             width: '40px',
             height: '40px',
             borderRadius: '50%',
-            background: '#f3f4f6',
-            border: '1px solid #e5e7eb',
+            background: 'var(--bg-secondary)',
+            border: '1px solid var(--border)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -452,14 +452,14 @@ const Contacts: React.FC = () => {
       <div style={{ padding: isMobile ? '1rem' : '1.5rem 2rem' }}>
         {/* Search Bar */}
         <div style={{
-          background: '#fff',
+          background: 'var(--bg-secondary)',
           borderRadius: '16px',
           padding: '1rem 1.25rem',
           marginBottom: '1.5rem',
           display: 'flex',
           alignItems: 'center',
           gap: '0.75rem',
-          border: '1px solid #e5e7eb',
+          border: '1px solid var(--border)',
         }}>
           <span style={{ fontSize: '1.25rem', opacity: 0.5 }}>🔍</span>
           <input

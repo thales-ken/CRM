@@ -71,7 +71,7 @@ const Deals: React.FC = () => {
             key={stage}
             onClick={() => setFilterStage(stage === filterStage ? null : stage)}
             style={{
-              background: filterStage === stage ? 'var(--primary)' : '#fff',
+              background: filterStage === stage ? 'var(--primary)' : 'var(--bg-secondary)',
               color: filterStage === stage ? '#fff' : 'var(--text-primary)',
               padding: '1.5rem',
             borderRadius: '12px',
@@ -97,7 +97,7 @@ const Deals: React.FC = () => {
 
       {/* Deals Table */}
       <div style={{
-        background: '#fff',
+        background: 'var(--bg-secondary)',
         border: '1px solid var(--border)',
         borderRadius: '8px',
         padding: '1.5rem',

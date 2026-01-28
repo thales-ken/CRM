@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { MobileProvider } from './contexts/MobileContext';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import NavBar from './components/ui/NavBar';
 import MobileNav from './components/mobile/MobileNav';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -74,11 +75,13 @@ const AppLayout: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <AuthProvider>
-      <Router>
-        <AppLayout />
-      </Router>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <Router>
+          <AppLayout />
+        </Router>
+      </AuthProvider>
+    </ThemeProvider>
   );
 };;
 

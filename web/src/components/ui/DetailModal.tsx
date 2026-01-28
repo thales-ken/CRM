@@ -24,7 +24,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ title, isOpen, onClose, child
       zIndex: 1000,
     }}>
       <div style={{
-        background: '#fff',
+        background: 'var(--bg-secondary)',
         padding: '2rem',
         borderRadius: '8px',
         maxWidth: '500px',

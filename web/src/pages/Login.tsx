@@ -46,7 +46,7 @@ const Login: React.FC = () => {
       padding: '1rem',
     }}>
       <div style={{
-        background: '#fff',
+        background: 'var(--bg-secondary)',
         borderRadius: '12px',
         padding: '3rem 2rem',
         boxShadow: '0 20px 60px rgba(0,0,0,0.3)',

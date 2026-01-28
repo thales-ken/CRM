@@ -11,7 +11,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, onC
   <div
     onClick={onClick}
     style={{
-      background: 'linear-gradient(135deg, var(--bg-secondary) 0%, #f1f4f4 100%)',
+      background: 'var(--bg-secondary)',
       border: '1px solid var(--border)',
       borderRadius: '12px',
       padding: '1.5rem',

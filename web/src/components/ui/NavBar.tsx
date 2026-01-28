@@ -14,8 +14,8 @@ const NavBar: React.FC = () => {
   return (
     <nav style={{
       padding: '0.875rem 2rem',
-      background: '#fff',
-      borderBottom: '1px solid #e5e7eb',
+      background: 'var(--bg-secondary)',
+      borderBottom: '1px solid var(--border)',
       boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
       position: 'sticky',
       top: 0,
@@ -57,7 +57,7 @@ const NavBar: React.FC = () => {
           <span style={{
             fontSize: '1.125rem',
             fontWeight: '700',
-            color: '#1a1a1a',
+            color: 'var(--text-primary)',
           }}>
             CRM Sales
           </span>
@@ -171,8 +171,8 @@ const NavBar: React.FC = () => {
                 position: 'absolute',
                 right: 0,
                 top: '100%',
-                background: '#fff',
-                border: '1px solid #e5e7eb',
+                background: 'var(--bg-secondary)',
+                border: '1px solid var(--border)',
                 borderRadius: '8px',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                 minWidth: '200px',
@@ -181,9 +181,9 @@ const NavBar: React.FC = () => {
               }}>
                 <div style={{
                   padding: '1rem',
-                  borderBottom: '1px solid #f3f4f6',
+                  borderBottom: '1px solid var(--border)',
                 }}>
-                  <p style={{ margin: 0, fontWeight: '600', color: '#1a1a1a' }}>
+                  <p style={{ margin: 0, fontWeight: '600', color: 'var(--text-primary)' }}>
                     {user?.name}
                   </p>
                   <p style={{ margin: '0.25rem 0 0 0', fontSize: '0.85rem', color: '#6b7280' }}>
@@ -213,10 +213,10 @@ const NavBar: React.FC = () => {
                     padding: '0.75rem 1rem',
                     background: 'transparent',
                     border: 'none',
-                    borderBottom: '1px solid #f3f4f6',
+                    borderBottom: '1px solid var(--border)',
                     textAlign: 'left',
                     cursor: 'pointer',
-                    color: '#374151',
+                    color: 'var(--text-primary)',
                     fontSize: '0.9rem',
                     fontWeight: '500',
                     borderRadius: 0,

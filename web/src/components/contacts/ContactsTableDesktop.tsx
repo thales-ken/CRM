@@ -26,8 +26,8 @@ const ContactsTableDesktop: React.FC<ContactsTableDesktopProps> = ({
 }) => {
   return (
     <div style={{
-      background: '#fff',
-      border: '1px solid #e5e7eb',
+      background: 'var(--bg-secondary)',
+      border: '1px solid var(--border)',
       borderRadius: '8px',
       overflow: 'hidden',
     }}>
@@ -42,7 +42,7 @@ const ContactsTableDesktop: React.FC<ContactsTableDesktopProps> = ({
       ) : (
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
-            <tr style={{ background: '#f9fafb', borderBottom: '1px solid #e5e7eb' }}>
+            <tr style={{ background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border)' }}>
               <th style={{ padding: '0.75rem 1rem', textAlign: 'left', width: '40px' }}>
                 <input
                   type="checkbox"
@@ -65,10 +65,10 @@ const ContactsTableDesktop: React.FC<ContactsTableDesktopProps> = ({
               <tr 
                 key={contact.id}
                 style={{ 
-                  borderBottom: index < contacts.length - 1 ? '1px solid #f3f4f6' : 'none',
+                  borderBottom: index < contacts.length - 1 ? '1px solid var(--border)' : 'none',
                   cursor: 'pointer',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.background = '#f9fafb'}
+                onMouseEnter={(e) => e.currentTarget.style.background = 'var(--bg-secondary)'}
                 onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
               >
                 <td style={{ padding: '1rem' }}>
@@ -106,7 +106,7 @@ const ContactsTableDesktop: React.FC<ContactsTableDesktopProps> = ({
                       )}
                     </div>
                     <div>
-                      <div style={{ fontWeight: '600', color: '#1a1a1a', fontSize: '0.875rem' }}>
+                      <div style={{ fontWeight: '600', color: 'var(--text-primary)', fontSize: '0.875rem' }}>
                         {contact.name}
                       </div>
                       <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>
@@ -115,7 +115,7 @@ const ContactsTableDesktop: React.FC<ContactsTableDesktopProps> = ({
                     </div>
                   </div>
                 </td>
-                <td style={{ padding: '1rem', fontSize: '0.875rem', color: '#374151' }}>
+                <td style={{ padding: '1rem', fontSize: '0.875rem', color: 'var(--text-primary)' }}>
                   {contact.company}
                 </td>
                 <td style={{ padding: '1rem' }}>
